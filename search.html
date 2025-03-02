@@ -1,42 +1,83 @@
+<!-- search.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Pokémon</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="index.html">Pokémon World</a>
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home.html">Pokémon World</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="home.html">Home</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="search.html">Search Pokémon</a>
                     </li>
                 </ul>
             </div>
-        </nav>
-    </header>
-
-    <section class="search-container">
-        <div class="container text-center">
-            <h2>Search for a Pokémon</h2>
-            <input type="text" id="pokemonInput" placeholder="Enter Pokémon Name or ID" class="form-control mb-3">
-            <button id="searchButton" class="btn btn-primary">Search</button>
-
-            <div id="pokemonDetails" class="mt-4"></div>
         </div>
-    </section>
+    </nav>
+    <div class="container mt-5">
+        <h1 class="text-center">Search for a Pokémon</h1>
+        <div class="mb-3">
+            <input type="text" id="pokemonInput" class="form-control" placeholder="Enter Pokémon name or ID" />
+        </div>
+        <button class="btn btn-primary" onclick="searchPokemon()">Search</button>
 
-    <script src="app.js"></script>
+        <!-- Loading Spinner -->
+        <div id="loading" class="d-none text-center mt-4">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p>Loading...</p>
+        </div>
+
+        <!-- Display Pokémon info -->
+        <div id="pokemonInfo" class="mt-4"></div>
+    </div>
+
+    <script>
+        function searchPokemon() {
+            const input = document.getElementById('pokemonInput').value.trim().toLowerCase();
+
+            // Validate input
+            if (!input) {
+                alert("Please enter a Pokémon name or ID.");
+                return;
+            }
+
+            const url = `https://pokeapi.co/api/v2/pokemon/${input}`;
+            document.getElementById('loading').classList.remove('d-none');
+            document.getElementById('pokemonInfo').innerHTML = '';
+
+            axios.get(url)
+                .then(response => {
+                    const pokemon = response.data;
+                    const pokemonInfo = `
+                        <h3>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>
+                        <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}" class="img-fluid" />
+                        <p><strong>Types:</strong> ${pokemon.types.map(type => type.type.name).join(', ')}</p>
+                        <a href="details.html?id=${pokemon.id}" class="btn btn-info">See Details</a>
+                    `;
+                    document.getElementById('pokemonInfo').innerHTML = pokemonInfo;
+                })
+                .catch(error => {
+                    document.getElementById('pokemonInfo').innerHTML = '<p>Pokémon not found. Please try again.</p>';
+                })
+                .finally(() => {
+                    document.getElementById('loading').classList.add('d-none');
+                });
+        }
+    </script>
 </body>
 </html>

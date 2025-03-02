@@ -1,87 +1,47 @@
-/* General Styles */
+/* styles.css */
+
 body {
+    background-color: #5eff00;
     font-family: Arial, sans-serif;
-    background-color: #ff9d9d;
 }
 
 header {
-    background-color: #9a8015;
-    padding: 10px 0;
-}
-
-nav .navbar-brand {
-    color: #0080ff;
-    font-weight: bold;
-}
-
-.hero {
-    background-color: #003366;
-    color: #fff;
-    padding: 40px 0;
-}
-
-.hero h1 {
-    font-size: 3rem;
-}
-
-.search-container {
-    padding: 50px 0;
-}
-
-#pokemonDetails img {
-    max-width: 200px;
-}
-
-#typesList button {
-    background-color: #ffcc00;
-    border: none;
-    color: #003366;
-    font-size: 1.2rem;
-    margin: 5px;
-    padding: 10px;
-    cursor: pointer;
-}
-
-#typesList button:hover {
-    background-color: #003366;
-    color: #fff;
-}
-
-.container {
-    max-width: 900px;
+    background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png') no-repeat center center;
+    background-size: cover;
+    color: rgb(249, 0, 0);
 }
 
 footer {
-    background-color: #003366;
-    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.container {
+    padding: 30px 0;
+}
+
+.progress-bar {
+    background-color: #007bff;
     text-align: center;
+    color: white;
+}
+
+button {
+    width: 100%;
     padding: 10px;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
-.details-container {
-    padding: 50px 0;
+h1, h3 {
+    text-align: center;
 }
 
-h3 {
-    font-size: 2rem;
-    color: #003366;
+img {
+    display: block;
+    margin: 0 auto;
 }
 
-h5 {
-    font-size: 1.2rem;
-    color: #003366;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li {
-    font-size: 1.1rem;
-}
-
-ul li strong {
-    font-weight: bold;
+#pokemonInfo {
+    text-align: center;
 }

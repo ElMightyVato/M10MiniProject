@@ -3,38 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon World</title>
+    <title>Pokémon Explorer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Homepage -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Pokémon World</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Pokémon Explorer</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="home.html">Home</a>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="home.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="search.html">Search Pokémon</a>
                     </li>
                 </ul>
             </div>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <div class="container text-center">
-            <h1>Welcome to the Pokémon World</h1>
-            <p>Explore Pokémon information, abilities, moves, and much more!</p>
         </div>
-    </section>
+    </nav>
 
-    <script src="app.js"></script>
+    <!-- Hero Section -->
+    <div class="hero bg-dark text-white text-center py-5">
+        <h1>Welcome to the Pokémon Explorer!</h1>
+        <p>Discover the world of Pokémon like never before.</p>
+        <a href="search.html" class="btn btn-primary btn-lg">Start Searching</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
